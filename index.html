@@ -7,28 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Pokedex</title>
 </head>
-<body>
-    <main class="text-center">
+<body class="bg-gray-300">
+    <main class="text-center flex flex-col justify-items-center items-center p-4 bg-white w-4/5 m-auto">
         <h1 class="font-bold text-7xl">Pokedex</h1>
-        <ol class="grid grid-cols-2 mt-10">
-            <li class="p-6 m-2 bg-green-500 rounded-3xl text-slate-50 h-36 text-left font-bold flex justify-around">Bubasaur
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/35.png" alt="">
-            </li>
-            <li class="p-6 m-2 bg-green-500 rounded-3xl text-slate-50 h-36 text-left font-bold">Ivysaur
-
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/35.png" alt="">
-            </li>
-            <li class="p-6 m-2 bg-green-500 rounded-3xl text-slate-50 h-36 text-left font-bold">Venusaur
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/35.png" alt="">
-            </li>
-            <li class="p-6 m-2 bg-green-500 rounded-3xl text-slate-50 h-36 text-left font-bold">Charmander
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/35.png" alt="">
-            </li>
-            <li class="p-6 m-2 bg-green-500 rounded-3xl text-slate-50 h-36 text-left font-bold">Charmeleon
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/35.png" alt="">
-            </li>
-            <li class="p-6 m-2 bg-green-500 rounded-3xl text-slate-50 h-36 text-left font-bold">Charizard
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/35.png" alt="">
+        <ol class="grid grid-cols-2 mt-10 w-full max-sm:grid-cols-1 place-content-center place-items-center lg:grid-cols-3">
+            <li class="p-6 m-2 w-max h-full bg-green-500 rounded-3xl text-slate-50 text-left font-bold flex flex-col">
+                <span class="my-px text-right text-black opacity-30">#001</span>
+                <span class="text-lg mb-2">Bubasaur</span>
+                <div class="flex items-center">
+                    <ol class="flex flex-col gap-2">
+                        <li class="p-1 rounded-xl bg-neutral-300">grass</li>
+                        <li class="p-1 rounded-xl bg-neutral-300">poison</li>
+                    </ol>
+                    <img class="w-full" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/35.png" alt="">
+                </div>
             </li>
         </ol>
     </main>
