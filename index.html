@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Pokedex</title>
 </head>
 <body class="bg-gray-300">
     <main class="text-center flex flex-col justify-items-center items-center p-4 bg-white w-4/5 m-auto">
         <h1 class="font-bold text-7xl">Pokedex</h1>
-        <ol class="grid grid-cols-2 mt-10 w-full max-sm:grid-cols-1 place-content-center place-items-center lg:grid-cols-3">
+        <ol id="pokemonList" class="grid grid-cols-2 mt-10 w-full max-sm:grid-cols-1 place-content-center place-items-center lg:grid-cols-3 gap-4">
             <li class="p-6 m-2 w-max h-full bg-green-500 rounded-3xl text-slate-50 text-left font-bold flex flex-col">
                 <span class="my-px text-right text-black opacity-30">#001</span>
                 <span class="text-lg mb-2">Bubasaur</span>
@@ -24,5 +24,8 @@
             </li>
         </ol>
     </main>
+
+    <script src="./assets/js/poke-api.js"></script>
+    <script src="./assets/js/index.js"></script>
 </body>
 </html>
