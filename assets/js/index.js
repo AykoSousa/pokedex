@@ -1,23 +1,41 @@
-function convertPokemonToListItem(pokemon) {
-    return `
-        <li class="p-6 m-2 w-max h-full bg-green-500 rounded-3xl text-slate-50 text-left font-bold flex flex-col">
-            <span class="my-px text-right text-black opacity-30">#001</span>
-            <span class="text-lg mb-2">${pokemon.name}</span>
-            <div class="flex items-center">
-                <ol class="flex flex-col gap-2">
-                    <li class="p-1 rounded-xl bg-neutral-100">grass</li>
-                    <li class="p-1 rounded-xl bg-neutral-300">poison</li>
-                </ol>
-                <img class="w-full" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/35.png"
-                alt="${pokemon.name}">
-            </div>
-        </li>
-    `
+const pokemonList = document.getElementById('pokemonList');
+const loadMoreButton = document.getElementById('loadMoreButton');
+const maxRecords = 151
+const limit = 10;
+let offset = 0;
+
+function loadPokemonItems(offset, limit) {
+
+    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+        const newHTML = pokemons.map((pokemon) => `
+            <li class="${pokemon.type} p-6 m-2 w-4/5 h-full rounded-3xl text-slate-50 text-left font-bold flex flex-col">
+                <span class="my-px text-right text-black opacity-30">#0${pokemon.id}</span>
+                <span class="text-lg mb-2">${pokemon.name}</span>
+                <div class="flex items-center justify-between gap-4">
+                    <ol class="flex flex-col gap-2">
+                        ${pokemon.types.map((type) => `<li class="${type} brightness-110 p-2 text-center rounded-xl">${type}</li>`).join('')}
+                    </ol>
+                    <img class="w-24 lg:w-20" src="${pokemon.photo}"
+                    alt="${pokemon.name}">
+                </div>
+            </li>
+        `).join('')
+        pokemonList.innerHTML += newHTML
+    });
 }
 
-const pokemonList = document.getElementById('pokemonList')
+loadPokemonItems(offset, limit);
 
+loadMoreButton.addEventListener('click', () => {
+    offset += limit;
+    const qtdRecordNextPage = offset + limit
 
-pokeApi.getPokemons().then((pokemons) => {
-    pokemonList.innerHTML += pokemons.map((pokemon) => convertPokemonToListItem(pokemon)).join('')
+    if(qtdRecordNextPage >= maxRecords) {
+        const newLimit = maxRecords - offset;
+        loadPokemonItems(offset, newLimit)
+
+        loadMoreButton.parentElement.removeChild(loadMoreButton)
+    } else {
+        loadPokemonItems(offset, limit);
+    }
 });
